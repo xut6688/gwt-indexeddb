@@ -6,12 +6,14 @@
     <groupId>org.nuvola</groupId>
     <artifactId>indexeddb</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <gwt.version>2.7.0</gwt.version>
         <asm.version>5.0.3</asm.version>
         <gin.version>2.1.2</gin.version>
         <guice.version>3.0</guice.version>
+        <gwtjackson.version>0.7.0</gwtjackson.version>
 
         <!--Plugin versions-->
         <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
@@ -52,5 +54,31 @@
             <version>${gin.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- JSON Jackson dependencies -->
+        <dependency>
+            <groupId>com.github.nmorel.gwtjackson</groupId>
+            <artifactId>gwt-jackson</artifactId>
+            <version>${gwtjackson.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${target.jdk}</source>
+                    <target>${target.jdk}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
