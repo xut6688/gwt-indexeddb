@@ -18,6 +18,7 @@ war/WEB-INF/classes/
 
 # maven #
 target/
+gen/
 
 # intellij generated files #
 *.iml
