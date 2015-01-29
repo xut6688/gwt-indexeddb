@@ -78,6 +78,35 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                            <goal>compile</goal>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <module>org.nuvola.indexeddb.IndexedDb</module>
+                    <failOnError>true</failOnError>
+                    <testTimeOut>180</testTimeOut>
+                    <includes>**/*GwtTest.java</includes>
+                    <mode>htmlunit</mode>
+                    <gen>gen</gen>
+
+                    <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+                    <logLevel>INFO</logLevel>
+
+                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+
+                    <copyWebapp>true</copyWebapp>
+                    <sourceLevel>1.7</sourceLevel>
+                    <localWorkers>2</localWorkers>
+                    <hostedWebapp>${webappDirectory}</hostedWebapp>
+                </configuration>
             </plugin>
         </plugins>
     </build>
