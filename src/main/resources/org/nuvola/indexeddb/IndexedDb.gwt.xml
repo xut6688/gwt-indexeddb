@@ -3,6 +3,7 @@
         "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to="indexedDb">
     <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.json.JSON" />
 
     <entry-point class='org.nuvola.indexeddb.client.EntryTest'/>
 

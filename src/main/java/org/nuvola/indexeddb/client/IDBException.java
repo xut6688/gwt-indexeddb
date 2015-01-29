@@ -33,6 +33,9 @@ public class IDBException extends Exception {
         }
     }
 
+    private IDBException() {
+    }
+
     private native int getErrorCode(JavaScriptObject pJSO) /*-{
         return pJSO.code;
     }-*/;
@@ -45,5 +48,4 @@ public class IDBException extends Exception {
     public final int getCode() {
         return m_code;
     }
-
 }

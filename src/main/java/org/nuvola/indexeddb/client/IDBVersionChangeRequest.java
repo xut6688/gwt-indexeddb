@@ -7,7 +7,7 @@ public class IDBVersionChangeRequest extends IDBRequest {
 
     public final native void onBlocked(IDBCallback pCallback) /*-{
         this.onblocked = function (evt) {
-            @com.os.idb.client.IDBRequest::fireCallback(Lcom/os/idb/client/IDBCallback;Lcom/os/idb/client/IDBEvent;)(pCallback, evt);
+            @org.nuvola.indexeddb.client.IDBRequest::fireCallback(Lorg/nuvola/indexeddb/client/IDBCallback;Lorg/nuvola/indexeddb/client/IDBEvent;)(pCallback, evt);
         };
     }-*/;
 }

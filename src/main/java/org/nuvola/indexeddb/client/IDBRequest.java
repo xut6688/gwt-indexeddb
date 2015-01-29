@@ -66,13 +66,13 @@ public class IDBRequest extends JavaScriptObject {
 
     public final native void onError(IDBCallback pCallback) /*-{
         this.onerror = function (evt) {
-            @com.os.idb.client.IDBRequest::fireCallback(Lcom/os/idb/client/IDBCallback;Lcom/os/idb/client/IDBEvent;)(pCallback, evt);
+            @org.nuvola.indexeddb.client.IDBRequest::fireCallback(Lorg/nuvola/indexeddb/client/IDBCallback;Lorg/nuvola/indexeddb/client/IDBEvent;)(pCallback, evt);
         };
     }-*/;
 
     public final native void onSuccess(IDBCallback pCallback) /*-{
         this.onsuccess = function (evt) {
-            @com.os.idb.client.IDBRequest::fireCallback(Lcom/os/idb/client/IDBCallback;Lcom/os/idb/client/IDBEvent;)(pCallback, evt);
+            @org.nuvola.indexeddb.client.IDBRequest::fireCallback(Lorg/nuvola/indexeddb/client/IDBCallback;Lorg/nuvola/indexeddb/client/IDBEvent;)(pCallback, evt);
         };
     }-*/;
 }

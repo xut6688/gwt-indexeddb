@@ -21,19 +21,19 @@ public class IDBTransaction extends JavaScriptObject {
 
     public final native void onError(IDBCallback pCallback) /*-{
         this.onerror = function (evt) {
-            @com.os.idb.client.IDBUtils::fireCallback(Lcom/os/idb/client/IDBCallback;Lcom/os/idb/client/IDBEvent;)(pCallback, evt);
+            @org.nuvola.indexeddb.client.IDBUtils::fireCallback(Lorg/nuvola/indexeddb/client/IDBCallback;Lorg/nuvola/indexeddb/client/IDBEvent;)(pCallback, evt);
         };
     }-*/;
 
     public final native void onAbort(IDBCallback pCallback) /*-{
         this.onabort = function (evt) {
-            @com.os.idb.client.IDBUtils::fireCallback(Lcom/os/idb/client/IDBCallback;Lcom/os/idb/client/IDBEvent;)(pCallback, evt);
+            @org.nuvola.indexeddb.client.IDBUtils::fireCallback(Lorg/nuvola/indexeddb/client/IDBCallback;Lorg/nuvola/indexeddb/client/IDBEvent;)(pCallback, evt);
         };
     }-*/;
 
     public final native void onComplete(IDBCallback pCallback) /*-{
         this.oncomplete = function (evt) {
-            @com.os.idb.client.IDBUtils::fireCallback(Lcom/os/idb/client/IDBCallback;Lcom/os/idb/client/IDBEvent;)(pCallback, evt);
+            @org.nuvola.indexeddb.client.IDBUtils::fireCallback(Lorg/nuvola/indexeddb/client/IDBCallback;Lorg/nuvola/indexeddb/client/IDBEvent;)(pCallback, evt);
         };
     }-*/;
 

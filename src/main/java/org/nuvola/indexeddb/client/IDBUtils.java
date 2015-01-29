@@ -95,5 +95,4 @@ public class IDBUtils {
         }
         return js;
     }
-
 }

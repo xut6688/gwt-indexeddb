@@ -3,6 +3,10 @@ package org.nuvola.indexeddb.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.nuvola.indexeddb.client.IDBDAO.EmptyExecCtx;
+import org.nuvola.indexeddb.client.IDBDAO.TransactionScopedOp;
+import org.nuvola.indexeddb.client.util.BufferedReader;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.http.client.Request;
@@ -11,13 +15,6 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.googlecode.future.client.Future;
-import com.googlecode.future.client.FutureResult;
-import com.os.idb.client.IDBDAO.EmptyExecCtx;
-import com.os.idb.client.IDBDAO.TransactionScopedOp;
-import com.os.idb.client.IDBDAO.VersionedScopedOp;
-import com.os.idb.client.util.BufferedReader;
-import com.os.idb.client.util.StringReader;
 
 public class IDBTest implements EntryPoint {
     public static class Person extends JavaScriptObject {
@@ -117,7 +114,7 @@ public class IDBTest implements EntryPoint {
             @Override
             public Future<EmptyExecCtx> execute(IDBTransaction pTransaction, final EmptyExecCtx pCtx) {
                 System.out.println("Saving:" + pPerson.asString());
-                final FutureResult<EmptyExecCtx> fr = new FutureResult<IDBDAO.EmptyExecCtx>();
+                final FutureResult<EmptyExecCtx> fr = new FutureResult<EmptyExecCtx>();
                 try {
                     IDBObjectStore os = pTransaction.objectStore(getObjectStoreName());
                     IDBRequest ir = os.add(pPerson);
@@ -229,7 +226,7 @@ public class IDBTest implements EntryPoint {
                                     Future<EmptyExecCtx> fr = IDBDAO.executeReadOnlyTransaction("Test", EmptyExecCtx.INSTANCE, new TransactionScopedOp<EmptyExecCtx>() {
                                                 @Override
                                                 public Future<EmptyExecCtx> execute(IDBTransaction pTransaction, final EmptyExecCtx pCtx) {
-                                                    final FutureResult<EmptyExecCtx> fr = new FutureResult<IDBDAO.EmptyExecCtx>();
+                                                    final FutureResult<EmptyExecCtx> fr = new FutureResult<EmptyExecCtx>();
                                                     try {
                                                         final IDBObjectStore os = pTransaction.objectStore(getObjectStoreName());
                                                         IDBDAO.iterateCursor(os.openCursor(IDBKeyRange.only(100)), new IDBCursorCallback() {
@@ -319,5 +316,4 @@ public class IDBTest implements EntryPoint {
             }
         });
     }
-
 }
