@@ -15,11 +15,11 @@ public class IDBFactory extends JavaScriptObject {
         init();
     }
 
-    public final static native IDBRequest open(String pDBName) /*-{
+    public final static native IDBOpenDBRequest open(String pDBName) /*-{
         return $wnd.indexedDB.open(pDBName);
     }-*/;
 
-    public final static native IDBVersionChangeRequest deleteDatabase(String pDBName) /*-{
+    public final static native IDBOpenDBRequest deleteDatabase(String pDBName) /*-{
         return $wnd.indexedDB.deleteDatabase(pDBName);
     }-*/;
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
         "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
-<module rename-to="indexedDb">
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name="com.google.gwt.json.JSON" />
+<module rename-to="indexedDbSamples">
+    <inherits name='org.nuvola.indexeddb.IndexedDb'/>
 
-    <entry-point class='org.nuvola.indexeddb.client.EntryTest'/>
+    <entry-point class='org.nuvola.indexeddb.samples.client.IDBTest' />
 
     <source path='client'/>
 </module>
