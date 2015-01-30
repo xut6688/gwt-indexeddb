@@ -4,9 +4,9 @@ import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 
 public class IDBTransaction extends JavaScriptObject {
-    public static final int READ_ONLY = 0;
-    public static final int READ_WRITE = 1;
-    public static final int VERSION_CHANGE = 2;
+    public static final String READ_ONLY = "readonly";
+    public static final String READ_WRITE = "readwrite";
+    public static final String VERSION_CHANGE = "versionchange";
 
     private static native void init() /*-{
         $wnd.IDBTransaction = $wnd.IDBTransaction || $wnd.webkitIDBTransaction;

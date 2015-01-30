@@ -3,6 +3,6 @@
         "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module>
     <inherits name='com.google.gwt.user.User'/>
-    <inherits name="com.google.gwt.json.JSON" />
+    <inherits name='com.google.gwt.json.JSON'/>
     <source path='client'/>
 </module>

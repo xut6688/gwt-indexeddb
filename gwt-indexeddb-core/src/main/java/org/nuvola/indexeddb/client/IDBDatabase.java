@@ -2,7 +2,6 @@ package org.nuvola.indexeddb.client;
 
 import java.util.List;
 
-import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -50,11 +49,11 @@ public class IDBDatabase extends JavaScriptObject {
         this.close();
     }-*/;
 
-    private native IDBTransaction transaction0(JsArrayString pStoreNames, int pMode) throws JavaScriptException /*-{
+    private native IDBTransaction transaction0(JsArrayString pStoreNames, String pMode) throws JavaScriptException /*-{
         return this.transaction(pStoreNames, pMode);
     }-*/;
 
-    public final IDBTransaction transaction(String[] pStoreNames, int pMode) throws IDBException {
+    public final IDBTransaction transaction(String[] pStoreNames, String pMode) throws IDBException {
         try {
             return transaction0(IDBUtils.toJsArray(pStoreNames), pMode);
         } catch (JavaScriptException jex) {
@@ -100,81 +99,6 @@ public class IDBDatabase extends JavaScriptObject {
         } catch (JavaScriptException jex) {
             throw new IDBException(jex);
         }
-    }
-
-    private native IDBVersionChangeRequest setVersion0(String pVersion) throws JavaScriptException /*-{
-        return this.setVersion(pVersion);
-    }-*/;
-
-    public final IDBVersionChangeRequest setVersion(String pName) throws IDBException {
-        try {
-            return this.setVersion0(pName);
-        } catch (JavaScriptException jex) {
-            throw new IDBException(jex);
-        }
-    }
-
-    public final void createObjectStore(final String pName, final String pKeyPath, final boolean pAutoIncrement, final AsyncCallback<IDBObjectStore> pCallback) throws IDBException {
-        IDBVersionChangeRequest ir = setVersion("" + Duration.currentTimeMillis() + "-" + Math.random());
-        ir.onBlocked(new IDBCallback() {
-            @Override
-            public void onEvent(IDBEvent pEvent) {
-                System.out.println("Blocked:" + pEvent);
-                pCallback.onFailure(new IDBException(IDBException.UNKNOWN_ERR, pEvent.toString()));
-            }
-        });
-        ir.onError(new IDBCallback() {
-            @Override
-            public void onEvent(IDBEvent pEvent) {
-                System.out.println("Error:" + pEvent);
-                pCallback.onFailure(new IDBException(IDBException.UNKNOWN_ERR, pEvent.toString()));
-            }
-        });
-        ir.onSuccess(new IDBCallback() {
-            @Override
-            public void onEvent(IDBEvent pEvent) {
-                IDBDatabaseOptionalParameters p = IDBDatabaseOptionalParameters.create();
-                p.setAutoIncrement(pAutoIncrement);
-                if (pKeyPath != null) {
-                    p.setKeyPath(pKeyPath);
-                }
-                try {
-                    IDBObjectStore os = IDBDatabase.this.createObjectStore(pName, p);
-                    pCallback.onSuccess(os);
-                } catch (IDBException ex) {
-                    pCallback.onFailure(ex);
-                }
-            }
-        });
-    }
-
-    public final void deleteObjectStore(final String pName, final AsyncCallback<Void> pCallback) throws IDBException {
-        IDBVersionChangeRequest ir = setVersion("" + Duration.currentTimeMillis() + "-" + Math.random());
-        ir.onBlocked(new IDBCallback() {
-            @Override
-            public void onEvent(IDBEvent pEvent) {
-                System.out.println("Blocked:" + pEvent);
-                pCallback.onFailure(new IDBException(IDBException.UNKNOWN_ERR, pEvent.toString()));
-            }
-        });
-        ir.onError(new IDBCallback() {
-            @Override
-            public void onEvent(IDBEvent pEvent) {
-                System.out.println("Error:" + pEvent);
-                pCallback.onFailure(new IDBException(IDBException.UNKNOWN_ERR, pEvent.toString()));
-            }
-        });
-        ir.onSuccess(new IDBCallback() {
-            @Override
-            public void onEvent(IDBEvent pEvent) {
-                try {
-                    IDBDatabase.this.deleteObjectStore(pName);
-                    pCallback.onSuccess(null);
-                } catch (IDBException ex) {
-                    pCallback.onFailure(ex);
-                }
-            }
-        });
     }
 
     public static void open(String pName, final ConnectionCallback pCallback) {

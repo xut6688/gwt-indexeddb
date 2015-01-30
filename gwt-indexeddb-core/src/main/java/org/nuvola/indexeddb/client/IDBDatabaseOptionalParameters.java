@@ -27,5 +27,4 @@ public class IDBDatabaseOptionalParameters extends JavaScriptObject {
         res.setAutoIncrement(pAutoIncrement);
         return res;
     }
-
 }
