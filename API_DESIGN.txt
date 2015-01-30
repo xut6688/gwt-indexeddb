@@ -1,0 +1,5 @@
+1. In order that the database is always upgraded, the version number should random Like Timestamp so that the code for
+the upgrade is always loaded.
+
+2. --
+
