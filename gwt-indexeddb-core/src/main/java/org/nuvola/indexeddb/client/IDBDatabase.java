@@ -177,8 +177,12 @@ public class IDBDatabase extends JavaScriptObject {
         });
     }
 
-    public static void open(String pName, final AsyncCallback<IDBDatabase> pCallback) {
-        final IDBRequest ir = IDBFactory.open(pName);
+    public static void open(String pName, final ConnectionCallback pCallback) {
+        open(pName, 1L, pCallback);
+    }
+
+    public static void open(String pName, Long version, final ConnectionCallback pCallback) {
+        final IDBOpenDBRequest ir = IDBFactory.open(pName, version);
         ir.onError(new IDBCallback() {
             @Override
             public void onEvent(IDBEvent pEvent) {
@@ -196,10 +200,20 @@ public class IDBDatabase extends JavaScriptObject {
                 }
             }
         });
+        ir.onUpgradeNeeded(new IDBCallback() {
+            @Override
+            public void onEvent(IDBEvent pEvent) {
+                try {
+                    pCallback.onUpgradeNeeded((IDBDatabase) ir.result().cast());
+                } catch (IDBException ex) {
+                    pCallback.onFailure(ex);
+                }
+            }
+        });
     }
 
     public static void deleteDatabase(String pName, final AsyncCallback<IDBEvent> pCallback) {
-        final IDBVersionChangeRequest ir = IDBFactory.deleteDatabase(pName);
+        final IDBOpenDBRequest ir = IDBFactory.deleteDatabase(pName);
         ir.onError(new IDBCallback() {
             @Override
             public void onEvent(IDBEvent pEvent) {

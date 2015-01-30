@@ -1,5 +1,6 @@
 package org.nuvola.indexeddb.samples.client;
 
+import org.nuvola.indexeddb.client.ConnectionCallback;
 import org.nuvola.indexeddb.client.IDBDatabase;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -11,14 +12,19 @@ public class IDBTest implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        openDatabaseConnection("test_db", "2");
+        openDatabaseConnection("test_db", 3L);
     }
 
-    private void openDatabaseConnection(String databaseName, final String version) {
-        IDBDatabase.open(databaseName, new AsyncCallback<IDBDatabase>() {
+    private void openDatabaseConnection(String databaseName, Long version) {
+        IDBDatabase.open(databaseName, version, new ConnectionCallback() {
             @Override
             public void onFailure(Throwable throwable) {
                 Window.alert("Can't open connection to database");
+            }
+
+            @Override
+            public void onUpgradeNeeded(IDBDatabase idbDatabase) {
+                Window.alert("Upgrading the database...");
             }
 
             @Override
