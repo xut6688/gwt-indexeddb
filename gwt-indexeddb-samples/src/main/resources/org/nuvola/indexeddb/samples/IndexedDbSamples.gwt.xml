@@ -7,4 +7,5 @@
     <entry-point class='org.nuvola.indexeddb.samples.client.IDBTest' />
 
     <source path='client'/>
+    <source path='shared'/>
 </module>

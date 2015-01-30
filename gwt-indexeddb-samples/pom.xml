@@ -17,6 +17,12 @@
             <groupId>org.nuvola</groupId>
             <artifactId>gwt-indexeddb-core</artifactId>
         </dependency>
+
+        <!-- JSON Jackson dependencies -->
+        <dependency>
+            <groupId>com.github.nmorel.gwtjackson</groupId>
+            <artifactId>gwt-jackson</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

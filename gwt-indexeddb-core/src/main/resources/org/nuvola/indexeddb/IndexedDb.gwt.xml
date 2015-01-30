@@ -4,5 +4,6 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.google.gwt.json.JSON'/>
+    <inherits name="com.github.nmorel.gwtjackson.GwtJackson" />
     <source path='client'/>
 </module>

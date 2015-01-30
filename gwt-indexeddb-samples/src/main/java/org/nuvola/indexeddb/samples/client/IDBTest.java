@@ -1,17 +1,28 @@
 package org.nuvola.indexeddb.samples.client;
 
+import java.util.Date;
+
 import org.nuvola.indexeddb.client.ConnectionCallback;
 import org.nuvola.indexeddb.client.IDBDatabase;
 import org.nuvola.indexeddb.client.IDBDatabaseOptionalParameters;
 import org.nuvola.indexeddb.client.IDBException;
 import org.nuvola.indexeddb.client.IDBObjectStore;
 import org.nuvola.indexeddb.client.IDBTransaction;
+import org.nuvola.indexeddb.samples.shared.User;
 
+import com.github.nmorel.gwtjackson.client.ObjectWriter;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class IDBTest implements EntryPoint {
+    public static interface UserWriter extends ObjectWriter<User> {
+    }
+
+    private static final UserWriter USER_WRITER = GWT.create(UserWriter.class);
+
     private IDBDatabase database;
 
     @Override
@@ -53,7 +64,14 @@ public class IDBTest implements EntryPoint {
     private void insertData() {
         try {
             IDBTransaction tx = database.transaction(new String[] {"users"});
-            // TODO Use GWT-Jackson to Serialze Data ...
+            IDBObjectStore objectStore = tx.objectStore("users");
+
+            User user = new User("FG383", "Idriss", "Mrabti", "imrabti@gmail.com", new Date());
+
+            JSONObject dsd = new JSONObject();
+            JavaScriptObject.createObject().
+
+            objectStore.add(USER_WRITER.write(user));
         } catch (IDBException e) {
             Window.alert(e.getMessage());
         }
