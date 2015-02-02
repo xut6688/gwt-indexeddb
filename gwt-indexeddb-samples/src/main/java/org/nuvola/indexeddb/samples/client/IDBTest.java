@@ -2,6 +2,7 @@ package org.nuvola.indexeddb.samples.client;
 
 import java.util.Date;
 
+import com.google.gwt.json.client.JSONParser;
 import org.nuvola.indexeddb.client.ConnectionCallback;
 import org.nuvola.indexeddb.client.IDBDatabase;
 import org.nuvola.indexeddb.client.IDBDatabaseOptionalParameters;
@@ -68,10 +69,8 @@ public class IDBTest implements EntryPoint {
 
             User user = new User("FG383", "Idriss", "Mrabti", "imrabti@gmail.com", new Date());
 
-            JSONObject dsd = new JSONObject();
-            JavaScriptObject.createObject().
-
-            objectStore.add(USER_WRITER.write(user));
+            JSONObject userJson = JSONParser.parseStrict(USER_WRITER.write(user)).isObject();
+            objectStore.add(userJson.getJavaScriptObject());
         } catch (IDBException e) {
             Window.alert(e.getMessage());
         }
