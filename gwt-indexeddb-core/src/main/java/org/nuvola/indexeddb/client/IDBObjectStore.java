@@ -222,5 +222,4 @@ public class IDBObjectStore extends JavaScriptObject {
             throw new IDBException(jex);
         }
     }
-
 }
