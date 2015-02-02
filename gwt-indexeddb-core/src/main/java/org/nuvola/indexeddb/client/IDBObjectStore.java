@@ -78,11 +78,11 @@ public class IDBObjectStore extends JavaScriptObject {
         }
     }
 
-    private native IDBRequest delete0(JavaScriptObject pKey) throws JavaScriptException /*-{
+    private native IDBRequest delete0(String pKey) throws JavaScriptException /*-{
         return this["delete"](pKey);
     }-*/;
 
-    public final IDBRequest delete(JavaScriptObject pKey) throws IDBException {
+    public final IDBRequest delete(String pKey) throws IDBException {
         try {
             return delete0(pKey);
         } catch (JavaScriptException jex) {
@@ -90,11 +90,11 @@ public class IDBObjectStore extends JavaScriptObject {
         }
     }
 
-    private native IDBRequest get0(JavaScriptObject pKey) throws JavaScriptException /*-{
+    private native IDBRequest get0(String pKey) throws JavaScriptException /*-{
         return this.get(pKey);
     }-*/;
 
-    public final IDBRequest get(JavaScriptObject pKey) throws IDBException {
+    public final IDBRequest get(String pKey) throws IDBException {
         try {
             return get0(pKey);
         } catch (JavaScriptException jex) {
@@ -155,7 +155,8 @@ public class IDBObjectStore extends JavaScriptObject {
         return this.createIndex(pName, pKeyPath);
     }-*/;
 
-    private native IDBIndex createIndex0(String pName, String pKeyPath, IDBIndexOptionalParameters pOptions) throws JavaScriptException /*-{
+    private native IDBIndex createIndex0(String pName, String pKeyPath, IDBIndexOptionalParameters pOptions)
+            throws JavaScriptException /*-{
         return this.createIndex(pName, pKeyPath, pOptions);
     }-*/;
 
@@ -167,7 +168,8 @@ public class IDBObjectStore extends JavaScriptObject {
         }
     }
 
-    public final IDBIndex createIndex(String pName, String pKeyPath, IDBIndexOptionalParameters pOptions) throws IDBException {
+    public final IDBIndex createIndex(String pName, String pKeyPath, IDBIndexOptionalParameters pOptions)
+            throws IDBException {
         try {
             return createIndex0(pName, pKeyPath, pOptions);
         } catch (JavaScriptException jex) {
