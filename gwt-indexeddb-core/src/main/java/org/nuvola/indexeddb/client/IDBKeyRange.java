@@ -262,14 +262,14 @@ public class IDBKeyRange extends JavaScriptObject {
     }
 
     private native static IDBKeyRange bound0(JavaScriptObject pStartKey, JavaScriptObject pEndKey, boolean pStartOpen, boolean pEndOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
+        return $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
     }-*/;
 
     private native static IDBKeyRange bound0(int pStartKey, int pEndKey, boolean pStartOpen, boolean pEndOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
+        return $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
     }-*/;
 
     private native static IDBKeyRange bound0(String pStartKey, String pEndKey, boolean pStartOpen, boolean pEndOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
+        return $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
     }-*/;
 }
