@@ -57,15 +57,15 @@ public class IDBKeyRange extends JavaScriptObject {
     }
 
     private native static IDBKeyRange only0(JavaScriptObject pKey) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.only(pKey);
+        return $wnd.IDBKeyRange.only(pKey);
     }-*/;
 
     private native static IDBKeyRange only0(int pKey) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.only(pKey);
+        return $wnd.IDBKeyRange.only(pKey);
     }-*/;
 
     private native static IDBKeyRange only0(String pKey) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.only(pKey);
+        return $wnd.IDBKeyRange.only(pKey);
     }-*/;
 
     public final static IDBKeyRange lowerBound(JavaScriptObject pKey) throws IDBException {
@@ -117,15 +117,15 @@ public class IDBKeyRange extends JavaScriptObject {
     }
 
     private native static IDBKeyRange lowerBound0(JavaScriptObject pKey, boolean pOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.lowerBound(pKey, pOpen);
+        return $wnd.IDBKeyRange.lowerBound(pKey, pOpen);
     }-*/;
 
     private native static IDBKeyRange lowerBound0(int pKey, boolean pOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.lowerBound(pKey, pOpen);
+        return $wnd.IDBKeyRange.lowerBound(pKey, pOpen);
     }-*/;
 
     private native static IDBKeyRange lowerBound0(String pKey, boolean pOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.lowerBound(pKey, pOpen);
+        return $wnd.IDBKeyRange.lowerBound(pKey, pOpen);
     }-*/;
 
     public final static IDBKeyRange upperBound(JavaScriptObject pKey) throws IDBException {
@@ -177,15 +177,15 @@ public class IDBKeyRange extends JavaScriptObject {
     }
 
     private native static IDBKeyRange upperBound0(JavaScriptObject pKey, boolean pOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.upperBound(pKey, pOpen);
+        return $wnd.IDBKeyRange.upperBound(pKey, pOpen);
     }-*/;
 
     private native static IDBKeyRange upperBound0(int pKey, boolean pOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.upperBound(pKey, pOpen);
+        return $wnd.IDBKeyRange.upperBound(pKey, pOpen);
     }-*/;
 
     private native static IDBKeyRange upperBound0(String pKey, boolean pOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.upperBound(pKey, pOpen);
+        return $wnd.IDBKeyRange.upperBound(pKey, pOpen);
     }-*/;
 
     public final static IDBKeyRange bound(JavaScriptObject pStartKey, JavaScriptObject pEndKey) throws IDBException {
@@ -262,14 +262,14 @@ public class IDBKeyRange extends JavaScriptObject {
     }
 
     private native static IDBKeyRange bound0(JavaScriptObject pStartKey, JavaScriptObject pEndKey, boolean pStartOpen, boolean pEndOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
+        return $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
     }-*/;
 
     private native static IDBKeyRange bound0(int pStartKey, int pEndKey, boolean pStartOpen, boolean pEndOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
+        return $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
     }-*/;
 
     private native static IDBKeyRange bound0(String pStartKey, String pEndKey, boolean pStartOpen, boolean pEndOpen) throws JavaScriptException /*-{
-        return new $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
+        return $wnd.IDBKeyRange.bound(pStartKey, pEndKey, pStartOpen, pEndOpen);
     }-*/;
 }
